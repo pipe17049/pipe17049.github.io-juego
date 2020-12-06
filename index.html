@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" onClick="salto()">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        #juego {
+            width: 500px;
+            height: 200px;
+            border: 1px solid black;
+            margin: auto;
+        }
+        
+        #personaje {
+            width: 20px;
+            height: 50px;
+            background-color: red;
+            position: relative;
+            top: 150px;
+        }
+        
+        .animacion {
+            animation: salto_personaje 300ms;
+        }
+        
+        @keyframes salto_personaje {
+            0% {
+                top: 150px;
+            }
+            30% {
+                top: 100px;
+            }
+            70% {
+                top: 100px;
+            }
+            100% {
+                top: 150px;
+            }
+        }
+        
+        #bloques {
+            background-color: blue;
+            width: 20px;
+            height: 20px;
+            position: relative;
+            top: 130px;
+            left: 500px;
+            animation: bloques 1s infinite linear;
+        }
+        
+        @keyframes bloques {
+            0% {
+                left: 500px
+            }
+            100% {
+                left: -20px
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="juego">
+        <div id="personaje"></div>
+        <div id="bloques"></div>
+    </div>
+    <p>Score: <span id="scoreSpan"></span></p>
+    <div>
+        <a class="btn" action="index.html"></a>
+    </div>
+
+    <script>
+        var personaje = document.getElementById("personaje");
+        var bloques = document.getElementById("bloques");
+        var contador = 0;
+
+        function salto() {
+            if (personaje.classList != "animacion") {
+                personaje.classList.add("animacion");
+
+            }
+
+            setTimeout(function() {
+                personaje.classList.remove("animacion");
+            }, 500);
+        }
+
+        var muerte = setInterval(function() {
+            var personaje_top = parseInt(
+                window.getComputedStyle(personaje).getPropertyValue("top")
+            )
+            var bloque_izq = parseInt(
+                window.getComputedStyle(bloques).getPropertyValue("left")
+            )
+
+            if (bloque_izq < 20 && bloque_izq > 0 && personaje_top >= 150) {
+                bloques.style.animation = "none";
+                personaje.style.animation = "none";
+                alert("Has perdido, tu puntaje fue " + contador * 100);
+                contador = 0;
+
+            } else if (bloque_izq < 20 && bloque_izq > 0) {
+                contador++;
+                document.getElementById("scoreSpan").innerHTML = Math.floor(counter / 100);
+            }
+        }, 10);
+    </script>
+
+</body>
+
+</html>
