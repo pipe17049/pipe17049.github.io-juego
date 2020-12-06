@@ -63,7 +63,7 @@
             position: relative;
             top: 188px;
             left: 500px;
-            animation: bloques_key 1500ms infinite linear;
+            animation: bloques_key 2000ms infinite linear;
         }
         
         #botones {
@@ -140,10 +140,10 @@
                     contador += (aux * 50);
 
                     document.getElementById("scoreSpan").innerHTML = contador;
-                    if (contador % 1200 == 0) {
+                    if (contador % 1600 == 0) {
                         aux += 1;
                         document.getElementById("bloques").style.animationDuration =
-                            String(1500 - (aux * 40)) + "ms";
+                            String(2000 - (aux * 50)) + "ms";
                     }
 
                 }
