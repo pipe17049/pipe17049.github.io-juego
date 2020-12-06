@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta content="" name="description" />
+    <meta content="Andres Felipe Escobar" name="author" />
+
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <style>
@@ -23,7 +26,7 @@
             height: 300px;
             border: 1px solid black;
             margin: auto;
-            background-color: grey;
+            background-color: aquamarine;
         }
         
         #personaje {
@@ -31,7 +34,7 @@
             height: 50px;
             background-color: red;
             position: relative;
-            top: 210px;
+            top: 208px;
         }
         
         .animacion {
@@ -40,7 +43,7 @@
         
         @keyframes salto_personaje {
             0% {
-                top: 210px;
+                top: 208px;
             }
             30% {
                 top: 160px;
@@ -49,18 +52,18 @@
                 top: 160px;
             }
             100% {
-                top: 210px;
+                top: 208px;
             }
         }
         
         #bloques {
-            background-color: blue;
+            background-color: purple;
             width: 20px;
             height: 20px;
             position: relative;
-            top: 190px;
+            top: 188px;
             left: 500px;
-            animation: bloques_key 1000ms infinite linear;
+            animation: bloques_key 1500ms infinite linear;
         }
         
         #botones {
@@ -69,10 +72,10 @@
         
         @keyframes bloques_key {
             0% {
-                left: 480px
+                left: 480px;
             }
             100% {
-                left: -20px
+                left: -20px;
             }
         }
     </style>
@@ -80,14 +83,17 @@
 
 <body>
     <div class="container text-center" style="padding-top: 100px;">
+        <h1 style="color:yellow">Juego del salto</h1>
         <div id="juego">
-            <p>Score: <span id="scoreSpan"></span></p>
+            <h3>
+                Score: <span id="scoreSpan"></span>
+            </h3>
             <div id="personaje"></div>
             <div id="bloques"></div>
         </div>
         <div id="botones">
-            <a class="btn btn-danger" onClick="salto()">Salto</a>
-            <a href="index.html" class="btn btn-info text-center" role="button">RECARGAR</a>
+            <a class="btn btn-dark btn-lg" onClick="salto()">SALTAR</a>
+            <a href="index.html" class="btn btn-danger btn-lg text-center" role="button">RECARGAR</a>
         </div>
 
 
@@ -131,13 +137,13 @@
 
                 } else if (personaje_top < 190) {
                     band = 1;
-                    contador += (aux * 100);
+                    contador += (aux * 50);
 
                     document.getElementById("scoreSpan").innerHTML = contador;
-                    if (contador % 1000 == 0) {
+                    if (contador % 1200 == 0) {
                         aux += 1;
                         document.getElementById("bloques").style.animationDuration =
-                            String(1000 - (aux * 20)) + "ms";
+                            String(1500 - (aux * 40)) + "ms";
                     }
 
                 }
